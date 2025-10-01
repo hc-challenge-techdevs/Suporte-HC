@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { tutoriaisData } from "../../data/tutoriasData";
+import { tutoriaisData } from "../../data/tutoriaisData";
 
 export default function Tutorial() {
   return (

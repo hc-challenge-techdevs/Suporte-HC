@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { tutoriaisData } from "../../data/tutoriasData";
+import { tutoriaisData } from "../../data/tutoriaisData";
 
 export default function DetalheTutorial() {
   const { titulo } = useParams();
