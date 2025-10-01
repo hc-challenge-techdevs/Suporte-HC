@@ -1,416 +1,466 @@
 @import "tailwindcss";
- 
+
 :root {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
+
 body {
-  @apply flex flex-col min-h-screen font-sans text-gray-800 transition-colors duration-300;
-  background-color: #ececec;
+    @apply flex flex-col min-h-screen font-sans text-gray-800 transition-colors duration-300;
+    background-color: #ececec;
 }
+
 @layer {
-  .menu-container {
-    @apply bg-[#fff] border-2 border-[#007b7b] p-4 w-full transition-colors duration-300;
-    .menu-logo {
-      & img {
-        @apply w-40 h-auto;
-      }
-    }
-    .menu-link {
-      @apply text-black hover:text-[#007b7b] px-3 py-2 text-base font-medium transition-colors duration-300;
-    }
-    .menu-link-mobile {
-      @apply text-black hover:text-[#007b7b] text-xl font-bold p-4;
-    }
-    .acc-button {
-      @apply text-black hover:text-[#007b7b];
-      & img {
-        @apply text-black h-6 w-6;
-      }
-    }
-  }
- 
-  .pagina-inicial {
-    @apply justify-center flex-grow w-full;
-    & h1 {
-      @apply text-center mt-15 text-4xl;
-    }
-    .cards {
-      @apply flex justify-center flex-wrap mt-20 mb-20 gap-5;
-      .card h2 {
-        @apply font-bold text-[#00a6a6] mb-3;
-      }
-      .card {
-        @apply bg-[#ffffff88] py-16 px-12 rounded-2xl w-72 text-[#000] border border-[#ffffff80] transition-colors duration-300;
-      }
-      .card:hover {
-        @apply bg-[#f8f2f2];
-      }
-    }
-  }
- 
-  .main-integrantes {
-    @apply flex justify-center gap-6 flex-wrap flex-grow w-full;
-    .cardsintegrante {
-      @apply bg-white rounded-xl mb-20 shadow-lg p-6 mt-21 text-center font-sans transition-colors duration-300;
-      & h2 {
-        @apply text-[#007b7b] text-xl font-semibold mb-4;
-      }
-      & img {
-        @apply w-60 h-60 rounded-full object-cover mx-auto mb-4;
-      }
-      & p {
-        @apply text-sm text-[#333] mb-2 transition-colors duration-300;
-      }
-      .cardsintegrante .icons a img {
-        @apply w-10 h-10 transition-transform duration-200;
-      }
-      .cardsintegrante .icons a img:hover {
-        @apply scale-110;
-      }
-      .icons {
-        @apply flex justify-center gap-6 mt-4;
-      }
-    }
-    .cardintegrante:hover {
-      @apply bg-[#dcd7d7];
-    }
-  }
- 
-  .main-faq {
-    @apply w-full py-10 px-5 flex justify-center items-center;
-    .faq {
-      @apply w-full max-w-[56.25rem] bg-[#ffffff] rounded-xl p-6 sm:p-10 transition-colors duration-300;
-    }
-    .faq h1 {
-      @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mb-8;
-    }
-    .faq h3 {
-      @apply text-[#007b7b] font-semibold text-base sm:text-lg;
-    }
-    .faq p {
-      @apply mt-1 text-[#000000] text-base leading-relaxed transition-colors duration-300;
-    }
-  }
- 
-  .main-contato {
-    @apply w-full;
-    h1 {
-      @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mt-10 mb-8;
-    }
-    & .contato {
-      @apply max-w-[37.5rem] my-10 m-auto text-center bg-[#ffffff] py-8 rounded-xl transition-colors duration-300;
-      h2 {
-        @apply text-[1.8rem] leading-9 text-[#007b7b] mb-3;
-      }
-      p {
-        @apply mt-1 mx-0;
-      }
-      .icone-contato {
-        @apply flex justify-center mt-10 items-center gap-6;
-      }
-    }
-  }
- 
-  .main-tutorial {
-    h1 {
-      @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mt-10 mb-8;
-    }
-    .apresentacao {
-      @apply max-w-[68.75rem] m-auto text-center;
-      .cards {
-        @apply flex justify-center flex-wrap mt-8 gap-5;
-        .card {
-          @apply bg-[#fff] py-9 px-10 mb-20 rounded-2xl w-70 text-[#222];
+    .menu-container {
+        @apply bg-[#fff] border-2 border-[#007b7b] p-4 w-full transition-colors duration-300;
+
+        .menu-logo {
+            & img {
+                @apply w-40 h-auto;
+            }
         }
-        .card:hover {
-          @apply bg-[#f8f2f2];
+
+        .menu-link {
+            @apply text-black hover:text-[#007b7b] px-3 py-2 text-base font-medium transition-colors duration-300;
         }
-        .card h2 {
-          @apply text-[#00a6a6] mb-3;
+
+        .menu-link-mobile {
+            @apply text-black hover:text-[#007b7b] text-xl font-bold p-4;
         }
-      }
+
+        .acc-button {
+            @apply text-black hover:text-[#007b7b];
+
+            & img {
+                @apply text-black h-6 w-6;
+            }
+        }
     }
-  }
- 
-  .main-detalhe-tutorial {
-    & .cards-detalhe {
-      @apply bg-white py-9 px-10 mb-12 mt-20 rounded-2xl max-w-2xs mx-auto shadow-lg;
+
+    .pagina-inicial {
+        @apply justify-center flex-grow w-full;
+
+        & h1 {
+            @apply text-center mt-15 text-4xl;
+        }
+
+        .cards {
+            @apply flex justify-center flex-wrap mt-20 mb-20 gap-5;
+
+            .card h2 {
+                @apply font-bold text-[#00a6a6] mb-3;
+            }
+
+            .card {
+                @apply bg-[#ffffff88] py-16 px-12 rounded-2xl w-72 text-[#000] border border-[#ffffff80] transition-colors duration-300;
+            }
+
+            .card:hover {
+                @apply bg-[#f8f2f2];
+            }
+        }
     }
- 
-    & .apresentacao {
-      @apply text-center;
+
+    .main-integrantes {
+        @apply flex justify-center gap-6 flex-wrap flex-grow w-full;
+
+        .cardsintegrante {
+            @apply bg-white rounded-xl mb-20 shadow-lg p-6 mt-21 text-center font-sans transition-colors duration-300;
+
+            & h2 {
+                @apply text-[#007b7b] text-xl font-semibold mb-4;
+            }
+
+            & img {
+                @apply w-60 h-60 rounded-full object-cover mx-auto mb-4;
+            }
+
+            & p {
+                @apply text-sm text-[#333] mb-2 transition-colors duration-300;
+            }
+
+            .cardsintegrante .icons a img {
+                @apply w-10 h-10 transition-transform duration-200;
+            }
+
+            .cardsintegrante .icons a img:hover {
+                @apply scale-110;
+            }
+
+            .icons {
+                @apply flex justify-center gap-6 mt-4;
+            }
+        }
+
+        .cardintegrante:hover {
+            @apply bg-[#dcd7d7];
+        }
     }
- 
-    & .titulo-detalhe {
-      @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mb-8;
+
+    .main-faq {
+        @apply w-full py-10 px-5 flex justify-center items-center;
+
+        .faq {
+            @apply w-full max-w-[56.25rem] bg-[#ffffff] rounded-xl p-6 sm:p-10 transition-colors duration-300;
+        }
+
+        .faq h1 {
+            @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mb-8;
+        }
+
+        .faq h3 {
+            @apply text-[#007b7b] font-semibold text-base sm:text-lg;
+        }
+
+        .faq p {
+            @apply mt-1 text-[#000000] text-base leading-relaxed transition-colors duration-300;
+        }
     }
- 
-    & .apresentacao video {
-      @apply rounded-xl w-full max-w-full h-auto mx-auto;
-      width: 100% !important;
-      height: auto !important;
+
+    .main-contato {
+        @apply w-full;
+
+        h1 {
+            @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mt-10 mb-8;
+        }
+
+        & .contato {
+            @apply max-w-[37.5rem] my-10 m-auto text-center bg-[#ffffff] py-8 rounded-xl transition-colors duration-300;
+
+            h2 {
+                @apply text-[1.8rem] leading-9 text-[#007b7b] mb-3;
+            }
+
+            p {
+                @apply mt-1 mx-0;
+            }
+
+            .icone-contato {
+                @apply flex justify-center mt-10 items-center gap-6;
+            }
+        }
     }
- 
-    & .video-card video {
-      @apply block w-full max-w-full h-auto rounded-lg mx-auto;
+
+    .main-tutorial {
+        h1 {
+            @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mt-10 mb-8;
+        }
+
+        .apresentacao {
+            @apply max-w-[68.75rem] m-auto text-center;
+
+            .cards {
+                @apply flex justify-center flex-wrap mt-8 gap-5;
+
+                .card {
+                    @apply bg-[#fff] py-9 px-10 mb-20 rounded-2xl w-70 text-[#222];
+                }
+
+                .card:hover {
+                    @apply bg-[#f8f2f2];
+                }
+
+                .card h2 {
+                    @apply text-[#00a6a6] mb-3;
+                }
+            }
+        }
     }
- 
-    & .texto-detalhe {
-      @apply text-[#444] mt-8 text-lg leading-relaxed;
+
+    .main-detalhe-tutorial {
+        & .cards-detalhe {
+            @apply bg-white py-9 px-10 mb-12 mt-20 rounded-2xl max-w-2xs mx-auto shadow-lg;
+        }
+
+        & .apresentacao {
+            @apply text-center;
+        }
+
+        & .titulo-detalhe {
+            @apply text-[#007b7b] text-center text-2xl sm:text-3xl font-bold mb-8;
+        }
+
+        & .apresentacao video {
+            @apply rounded-xl w-full max-w-full h-auto mx-auto;
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        & .video-card video {
+            @apply block w-full max-w-full h-auto rounded-lg mx-auto;
+        }
+
+        & .texto-detalhe {
+            @apply text-[#444] mt-8 text-lg leading-relaxed;
+        }
+
+        & .back-button {
+            @apply w-40 h-20 block mx-auto mb-20 py-2 px-8 bg-[#007b7b] text-white font-bold text-4xl rounded-lg transition-colors;
+        }
+
+        & .back-button:hover {
+            @apply bg-[#005f5f];
+        }
     }
- 
-    & .back-button {
-      @apply w-40 h-20 block mx-auto mb-20 py-2 px-8 bg-[#007b7b] text-white font-bold text-4xl rounded-lg transition-colors;
+
+    .lembretes-page {
+        @apply flex flex-col items-center py-10 px-4;
+
+        & h1 {
+            @apply text-center text-4xl font-bold text-teal-700 mb-8;
+        }
     }
- 
-    & .back-button:hover {
-      @apply bg-[#005f5f];
+
+    .react-calendar {
+        @apply w-full max-w-lg mx-auto rounded-2xl p-6 border-0 shadow-xl font-sans bg-white transition-colors duration-300;
     }
-  }
- 
-  .lembretes-page {
-    @apply flex flex-col items-center py-10 px-4;
-    & h1 {
-      @apply text-center text-4xl font-bold text-teal-700 mb-8;
+
+    .react-calendar,
+    .react-calendar *,
+    .react-calendar button {
+        @apply font-semibold;
     }
-  }
- 
-  .react-calendar {
-    @apply w-full max-w-lg mx-auto rounded-2xl p-6 border-0 shadow-xl font-sans bg-white transition-colors duration-300;
-  }
- 
-  .react-calendar,
-  .react-calendar *,
-  .react-calendar button {
-    @apply font-semibold;
-  }
- 
-  .react-calendar__navigation {
-    @apply flex justify-between items-center mb-4;
-  }
- 
-  .react-calendar__navigation button {
-    @apply text-xl font-bold text-gray-600 hover:bg-gray-100 rounded-full transition-colors duration-200 p-2 sm:p-3;
-    overflow: visible;
-  }
- 
-  .react-calendar__navigation__label {
-    @apply text-lg sm:text-2xl text-center text-teal-700 font-bold hover:!bg-transparent flex-grow;
-  }
- 
-  .react-calendar__navigation__prev2-button,
-  .react-calendar__navigation__next2-button {
-    @apply hidden;
-  }
- 
-  .react-calendar__month-view__weekdays {
-    @apply uppercase text-sm sm:text-base font-semibold text-gray-500;
-  }
- 
-  .react-calendar__month-view__weekdays abbr {
-    @apply no-underline;
-  }
- 
-  .react-calendar__tile {
-    @apply p-2 sm:p-3 text-lg sm:text-xl rounded-lg text-center transition-colors duration-200;
-  }
- 
-  .react-calendar__tile--now {
-    @apply bg-blue-100 text-blue-700 font-bold;
-  }
- 
-  .react-calendar__tile--active,
-  .react-calendar__tile--hasActive {
-    @apply bg-teal-600 text-white font-bold rounded-lg;
-  }
- 
-  .react-calendar__tile:enabled:hover:not(.react-calendar__tile--active),
-  .react-calendar__tile:enabled:focus:not(.react-calendar__tile--active) {
-    @apply bg-teal-500;
-  }
- 
-  .consulta-marcada {
-    @apply relative;
-  }
- 
-  .consulta-marcada::after {
-    content: "";
-    @apply absolute bottom-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#007b7b] border border-white;
-  }
- 
-  .form {
-    @apply w-full max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-lg mt-8 transition-colors duration-300;
-    & h2 {
-      @apply text-2xl font-semibold text-gray-800 mb-6;
+
+    .react-calendar__navigation {
+        @apply flex justify-between items-center mb-4;
     }
-    & label {
-      @apply block mb-4 text-lg font-medium text-gray-700;
-      & input,
-      & textarea {
-        @apply w-full mt-1 p-3 border border-gray-300 rounded-lg text-base
-               focus:outline-none focus:ring-2 focus:ring-teal-500 transition-colors duration-300;
-      }
+
+    .react-calendar__navigation button {
+        @apply text-xl font-bold text-gray-600 hover:bg-gray-100 rounded-full transition-colors duration-200 p-2 sm:p-3;
+        overflow: visible;
     }
-    & .error {
-      @apply block mt-1 text-sm text-red-600 font-medium;
+
+    .react-calendar__navigation__label {
+        @apply text-lg sm:text-2xl text-center text-teal-700 font-bold hover: !bg-transparent flex-grow;
     }
-    & button[type="submit"] {
-      @apply w-full bg-teal-600 text-white font-bold py-3 rounded-lg hover:bg-teal-700
-             transition duration-300 mt-4 text-lg;
+
+    .react-calendar__navigation__prev2-button,
+    .react-calendar__navigation__next2-button {
+        @apply hidden;
     }
-  }
- 
-  .lista-titulo {
-    @apply text-2xl font-bold text-teal-700 mt-12 mb-4;
-  }
- 
-  .lista {
-    @apply w-full max-w-2xl mx-auto;
-  }
- 
-  .lista li {
-    @apply bg-white p-4 rounded-lg shadow-sm mb-4 text-lg border-l-4 border-teal-500 transition-colors duration-300;
-  }
- 
-  footer {
-    @apply bg-[#007b7b] text-[#fff] text-center p-3.5 mt-auto w-full transition-colors duration-300;
-  }
- 
-  body.dark-mode {
-    background-color: #121212 !important;
-    @apply text-gray-200;
-  }
- 
-  .dark-mode {
-    background-color: #363a41 !important;
-    @apply text-gray-200;
-  }
- 
-  .dark-mode .menu-container {
-    @apply bg-[#1F1F1F] border-[#d6d6d6];
-  }
- 
-  .dark-mode .menu-link,
-  .dark-mode .menu-link-mobile,
-  .dark-mode .acc-button {
-    @apply text-gray-200 hover:text-[#6d6d6d];
-  }
- 
-  .dark-mode .pagina-inicial .card {
-    @apply bg-[#1F1F1F] text-gray-200 border-gray-600;
-  }
- 
-  .dark-mode .pagina-inicial .card:hover {
-    @apply bg-gray-600;
-  }
- 
-  .dark-mode .pagina-inicial h1 {
-    @apply text-white;
-  }
- 
-  .dark-mode .main-tutorial h1 {
-    @apply text-[#d6d6d6];
-  }
- 
-  .dark-mode .main-tutorial .apresentacao .card {
-    @apply bg-[#1F1F1F] py-9 px-10 mb-20 rounded-2xl w-70 text-[#222];
-  }
- 
-  .dark-mode .main-tutorial .apresentacao .card:hover {
-    @apply bg-gray-600;
-  }
- 
-  .dark-mode .cards-detalhe {
-    @apply bg-[#1F1F1F];
-  }
- 
-  .dark-mode .texto-detalhe {
-    @apply text-white;
-  }
- 
-  .dark-mode .main-integrantes .cardsintegrante {
-    @apply bg-[#1F1F1F];
-  }
- 
-  .dark-mode .main-integrantes .cardsintegrante:hover {
-    @apply bg-gray-600;
-  }
- 
-  .dark-mode .main-integrantes .cardsintegrante p {
-    @apply text-gray-300;
-  }
- 
-  .dark-mode .iconegit {
-    @apply text-[#ffffff];
-  }
- 
-  .dark-mode .faq,
-  .dark-mode .contato {
-    @apply bg-[#1F1F1F];
-  }
-  .dark-mode .faq p,
-  .dark-mode .contato p {
-    @apply text-gray-300;
-  }
-  .dark-mode .lembretes-page h1,
-  .dark-mode .lista-titulo {
-    @apply text-[#d6d6d6];
-  }
- 
-  .dark-mode .react-calendar {
-    background-color: #1f1f1f !important;
-    @apply shadow-none border-0;
-  }
-  .dark-mode .react-calendar * {
-    @apply text-gray-200;
-  }
-  .dark-mode .react-calendar__navigation button {
-    @apply text-gray-200 hover:bg-gray-700;
-  }
-  .dark-mode .react-calendar__navigation__label {
-    @apply text-[#d6d6d6];
-  }
-  .dark-mode .react-calendar__month-view__weekdays {
-    @apply text-gray-400;
-  }
-  .dark-mode .react-calendar__tile {
-    background-color: transparent;
-    @apply text-gray-200;
-  }
-  .dark-mode .react-calendar__tile--now {
-    @apply bg-blue-900/50 text-blue-300;
-  }
- 
- 
-  .dark-mode .react-calendar__tile--active,
-  .dark-mode .react-calendar__tile--hasActive {
-    background-color: #0d9488 !important;
-    color: white !important;
-  }
- 
-  .dark-mode .react-calendar__tile:enabled:hover,
-  .dark-mode .react-calendar__tile:enabled:focus {
-    background-color: #374151 !important;
-  }
- 
-  .dark-mode .form {
-    @apply bg-[#1F1F1F]
-  }
-  .dark-mode .form h2 {
-    @apply text-gray-200;
-  }
-  .dark-mode .form label {
-    @apply text-gray-400;
-  }
-  .dark-mode .form input,
-  .dark-mode .form textarea {
-    @apply bg-[#303030] border-gray-600 text-gray-200 focus:ring-[#cfcfcf];
-  }
-  .dark-mode .lista li {
-    @apply bg-[#1F1F1F] border-teal-500 text-white;
-  }
-  .dark-mode footer {
-    @apply bg-[#1F1F1F] text-gray-400 border-t border-gray-700;
-  }
+
+    .react-calendar__month-view__weekdays {
+        @apply uppercase text-sm sm:text-base font-semibold text-gray-500;
+    }
+
+    .react-calendar__month-view__weekdays abbr {
+        @apply no-underline;
+    }
+
+    .react-calendar__tile {
+        @apply p-2 sm:p-3 text-lg sm:text-xl rounded-lg text-center transition-colors duration-200;
+    }
+
+    .react-calendar__tile--now {
+        @apply bg-blue-100 text-blue-700 font-bold;
+    }
+
+    .react-calendar__tile--active,
+    .react-calendar__tile--hasActive {
+        @apply bg-teal-600 text-white font-bold rounded-lg;
+    }
+
+    .react-calendar__tile:enabled:hover:not(.react-calendar__tile--active),
+    .react-calendar__tile:enabled:focus:not(.react-calendar__tile--active) {
+        @apply bg-teal-500;
+    }
+
+    .consulta-marcada {
+        @apply relative;
+    }
+
+    .consulta-marcada::after {
+        content: "";
+        @apply absolute bottom-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#007b7b] border border-white;
+    }
+
+    .form {
+        @apply w-full max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-lg mt-8 transition-colors duration-300;
+
+        & h2 {
+            @apply text-2xl font-semibold text-gray-800 mb-6;
+        }
+
+        & label {
+            @apply block mb-4 text-lg font-medium text-gray-700;
+
+            & input,
+            & textarea {
+                @apply w-full mt-1 p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-teal-500 transition-colors duration-300;
+            }
+        }
+
+        & .error {
+            @apply block mt-1 text-sm text-red-600 font-medium;
+        }
+
+        & button[type="submit"] {
+            @apply w-full bg-teal-600 text-white font-bold py-3 rounded-lg hover:bg-teal-700 transition duration-300 mt-4 text-lg;
+        }
+    }
+
+    .lista-titulo {
+        @apply text-2xl font-bold text-teal-700 mt-12 mb-4;
+    }
+
+    .lista {
+        @apply w-full max-w-2xl mx-auto;
+    }
+
+    .lista li {
+        @apply bg-white p-4 rounded-lg shadow-sm mb-4 text-lg border-l-4 border-teal-500 transition-colors duration-300;
+    }
+
+    footer {
+        @apply bg-[#007b7b] text-[#fff] text-center p-3.5 mt-auto w-full transition-colors duration-300;
+    }
+
+    body.dark-mode {
+        background-color: #121212 !important;
+        @apply text-gray-200;
+    }
+
+    .dark-mode {
+        background-color: #363a41 !important;
+        @apply text-gray-200;
+    }
+
+    .dark-mode .menu-container {
+        @apply bg-[#1F1F1F] border-[#d6d6d6];
+    }
+
+    .dark-mode .menu-link,
+    .dark-mode .menu-link-mobile,
+    .dark-mode .acc-button {
+        @apply text-gray-200 hover:text-[#6d6d6d];
+    }
+
+    .dark-mode .pagina-inicial .card {
+        @apply bg-[#1F1F1F] text-gray-200 border-gray-600;
+    }
+
+    .dark-mode .pagina-inicial .card:hover {
+        @apply bg-gray-600;
+    }
+
+    .dark-mode .pagina-inicial h1 {
+        @apply text-white;
+    }
+
+    .dark-mode .main-tutorial h1 {
+        @apply text-[#d6d6d6];
+    }
+
+    .dark-mode .main-tutorial .apresentacao .card {
+        @apply bg-[#1F1F1F] py-9 px-10 mb-20 rounded-2xl w-70 text-[#222];
+    }
+
+    .dark-mode .main-tutorial .apresentacao .card:hover {
+        @apply bg-gray-600;
+    }
+
+    .dark-mode .cards-detalhe {
+        @apply bg-[#1F1F1F];
+    }
+
+    .dark-mode .texto-detalhe {
+        @apply text-white;
+    }
+
+    .dark-mode .main-integrantes .cardsintegrante {
+        @apply bg-[#1F1F1F];
+    }
+
+    .dark-mode .main-integrantes .cardsintegrante:hover {
+        @apply bg-gray-600;
+    }
+
+    .dark-mode .main-integrantes .cardsintegrante p {
+        @apply text-gray-300;
+    }
+
+    .dark-mode .iconegit {
+        @apply text-[#ffffff];
+    }
+
+    .dark-mode .faq,
+    .dark-mode .contato {
+        @apply bg-[#1F1F1F];
+    }
+
+    .dark-mode .faq p,
+    .dark-mode .contato p {
+        @apply text-gray-300;
+    }
+
+    .dark-mode .lembretes-page h1,
+    .dark-mode .lista-titulo {
+        @apply text-[#d6d6d6];
+    }
+
+    .dark-mode .react-calendar {
+        background-color: #1f1f1f !important;
+        @apply shadow-none border-0;
+    }
+
+    .dark-mode .react-calendar * {
+        @apply text-gray-200;
+    }
+
+    .dark-mode .react-calendar__navigation button {
+        @apply text-gray-200 hover:bg-gray-700;
+    }
+
+    .dark-mode .react-calendar__navigation__label {
+        @apply text-[#d6d6d6];
+    }
+
+    .dark-mode .react-calendar__month-view__weekdays {
+        @apply text-gray-400;
+    }
+
+    .dark-mode .react-calendar__tile {
+        background-color: transparent;
+        @apply text-gray-200;
+    }
+
+    .dark-mode .react-calendar__tile--now {
+        @apply bg-blue-900/50 text-blue-300;
+    }
+
+
+    .dark-mode .react-calendar__tile--active,
+    .dark-mode .react-calendar__tile--hasActive {
+        background-color: #0d9488 !important;
+        color: white !important;
+    }
+
+    .dark-mode .react-calendar__tile:enabled:hover,
+    .dark-mode .react-calendar__tile:enabled:focus {
+        background-color: #374151 !important;
+    }
+
+    .dark-mode .form {
+        @apply bg-[#1F1F1F]
+    }
+
+    .dark-mode .form h2 {
+        @apply text-gray-200;
+    }
+
+    .dark-mode .form label {
+        @apply text-gray-400;
+    }
+
+    .dark-mode .form input,
+    .dark-mode .form textarea {
+        @apply bg-[#303030] border-gray-600 text-gray-200 focus:ring-[#cfcfcf];
+    }
+
+    .dark-mode .lista li {
+        @apply bg-[#1F1F1F] border-teal-500 text-white;
+    }
+
+    .dark-mode footer {
+        @apply bg-[#1F1F1F] text-gray-400 border-t border-gray-700;
+    }
 }
- 

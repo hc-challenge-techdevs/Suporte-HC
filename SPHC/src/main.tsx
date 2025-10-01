@@ -10,7 +10,7 @@ import DetalheTutorial from "./components/DetalheTutorial/DetalheTutorial.tsx";
 import Contato from "./routes/Contato/index.tsx";
 import FAQ from "./routes/FAQ/index.tsx";
 import Integrantes from "./routes/Integrantes/index.tsx";
-import "./globals.css"
+import "./globals.css";
 
 const router = createBrowserRouter([
   {
