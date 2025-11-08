@@ -70,10 +70,35 @@ export async function buscarUsuarioPorId(id: number): Promise<UsuarioTO | null> 
         return null;
     }
 }
+export async function atualizarUsuario(id: number, payload: any): Promise<UsuarioTO | null> {
+    try {
+        const response = await fetch(`${API_URL}/usuarios/${id}`, {
+            method: 'PUT',
+            headers: JSON_HEADERS,
+            body: JSON.stringify(payload),
+        });
+        if (response.status === 201 || response.status === 200) { 
+            return (await response.json()) as UsuarioTO;
+        }
+        return null;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+}
 
-export async function buscarLoginPorIdUsuario(idUsuario: number): Promise<LoginTO | null> { return null; }
-export async function atualizarUsuario(id: number, payload: any): Promise<UsuarioTO | null> { return null; }
-export async function excluirUsuario(id: number): Promise<boolean> { return false; }
+export async function excluirUsuario(id: number): Promise<boolean> {
+    try {
+        const response = await fetch(`${API_URL}/usuarios/${id}`, {
+            method: 'DELETE',
+        });
+        // 204 indica sucesso na exclusão (No Content)
+        return response.status === 204;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
+}
  
 export async function criarLembrete(lembrete: LembreteTO): Promise<LembreteTO | null> {
     try {
