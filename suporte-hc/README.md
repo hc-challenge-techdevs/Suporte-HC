@@ -1,15 +1,15 @@
 # Suporte HC
-
+ 
 O Suporte HC é uma ferramenta simples e acessível desenvolvida para ajudar pacientes, em especial os idosos, a gerenciar suas consultas médicas e a navegar pelo aplicativo oficial do Hospital das Clínicas. O projeto visa combater as altas taxas de absenteísmo, causadas principalmente pela dificuldade de uso de plataformas digitais e esquecimento de compromissos.
-
+ 
 ---
-
+ 
 ## Informações Técnicas e de Desenvolvimento
-
+ 
 ### Tecnologias Utilizadas
-
+ 
 O projeto foi desenvolvido como uma **Single Page Application (SPA)** utilizando **React, Vite, e TypeScript**, com uma arquitetura modular. A estilização é realizada exclusivamente com **Tailwind CSS**. A aplicação promove a integração com o backend via consumo de APIs.
-
+ 
 | Categoria              | Tecnologia           | Uso no Projeto                                                                                                                                              |
 | :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Framework/Ambiente** | **React**            | Biblioteca principal para a construção da UI.                                                                                                               |
@@ -20,13 +20,13 @@ O projeto foi desenvolvido como uma **Single Page Application (SPA)** utilizando
 | **Formulários**        | **React Hook Form**  | Utilizado para gestão e validação de formulários (Cadastro, Login, Lembretes, Usuário).                                                                     |
 | **Biblioteca**         | **React Calendar**   | A biblioteca de calendário é importada e utilizada no componente Lembretes/index.tsx para a funcionalidade de criar lembretes de agendamento das consultas. |
 | **Integração**         | **API Remota**       | Consumo de endpoints para CRUD (GET/POST/PUT/DELETE) em `apiService.ts`.                                                                                    |
-
+ 
 ---
-
+ 
 ### Estrutura de Pastas
-
+ 
 A estrutura segue uma arquitetura modular por tipo de arquivo (`components`, `routes`, `services`, `types`) e uma pasta para arquivos públicos (`public`) contendo imagens e vídeos.
-
+ 
 ```
 ├─ SPHC/
 ├── public/
@@ -93,11 +93,11 @@ A estrutura segue uma arquitetura modular por tipo de arquivo (`components`, `ro
 ├── tsconfig.node.json
 └── vite.config.ts
 ```
-
+ 
 ---
-
+ 
 ### Imagens e Ícones
-
+ 
 | Tipo                     | Descrição                                                                  | Uso no Projeto                                                       |
 | :----------------------- | :------------------------------------------------------------------------- | :------------------------------------------------------------------- |
 | **Imagens**              | `logo-hc.png`, `foto-andrei.jpeg`, `foto-isabela.jpeg`, `foto-manuela.jpg` | Identificação visual do projeto e dos integrantes.                   |
@@ -105,20 +105,20 @@ A estrutura segue uma arquitetura modular por tipo de arquivo (`components`, `ro
 | **Ícones (React Icons)** | `FaSun`, `FaMoon`, `FaSearchPlus`, `FaSearchMinus`                         | Funcionalidades de acessibilidade (Modo Escuro e Controle de Fonte). |
 | **Ícones (React Icons)** | `FaUser`, `FaArrowRightFromBracket`                                        | Navegação de Autenticação e Logout.                                  |
 | **Ícones (React Icons)** | `FaEnvelope`, `FaPhoneAlt`, `FaWhatsapp`, `FaGithub`, `FaLinkedin`         | Links e informações de contato dos integrantes.                      |
-
+ 
 ---
-
+ 
 ## Links do Projeto
-
+ 
 | Plataforma           | Link                                                                                                               |
 | :------------------- | :----------------------------------------------------------------------------------------------------------------- |
-| **GitHub**           | [https://github.com/hc-challenge-techdevs/SPHC.git](https://github.com/hc-challenge-techdevs/SPHC.git) |
-| **Vídeo no YouTube** | [https://youtu.be/DKogn27Oiqc](https://youtu.be/DKogn27Oiqc)                                                       |
-
+| **GitHub**           | [https://github.com/hc-challenge-techdevs/SPHC.git](https://github.com/hc-challenge-techdevs/Suporte-HC.git) |
+| **Vídeo no YouTube** | [https://youtu.be/sOvbkOXPoDc](https://youtu.be/sOvbkOXPoDc)                                                       |
+| **Link do deploy na Vercel** | [https://sphc-gray.vercel.app/](https://sphc-gray.vercel.app/)
 ---
-
+ 
 ## Integrantes
-
+ 
 | Nome                      | RM     | Turma  |
 | :------------------------ | :----- | :----- |
 | Andrei de Paiva Gibbini   | 563061 | 1TDSPH |
