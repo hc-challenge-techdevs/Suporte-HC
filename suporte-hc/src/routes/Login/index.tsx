@@ -1,16 +1,15 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import type { LoginFormData } from "../../types/forms";
 import type { LoginTO } from "../../types/api";
 import { autenticarUsuario, buscarUsuarioPorId } from "../../services/apiService";
-import type { LoginFormData } from "../../types/forms";
 
 export default function Login() {
   const navigate = useNavigate();
   const [apiError, setApiError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -33,11 +32,25 @@ export default function Login() {
       const { auth, error } = await autenticarUsuario(payload);
 
       if (auth && auth.idUsuario !== -1) {
+        const idUsuario = auth.idUsuario;
+        const userFullData = await buscarUsuarioPorId(idUsuario);
 
-        alert("Login de Teste Básico OK! A lógica de sessão completa será adicionada.");
-        reset();
-        navigate("/lembretes"); 
-        return; 
+        if (userFullData) {
+          localStorage.setItem(
+            "session_user_data",
+            JSON.stringify({
+              idUsuario: idUsuario,
+              nomeUsuario: userFullData.nomeUsuario,
+              email: userFullData.email
+            })
+          );
+          reset();
+          navigate("/lembretes");
+          return;
+        } else {
+          setApiError("Login realizado, mas houve falha ao carregar os dados completos do usuário.");
+        }
+
       } else if (error) {
         setApiError(error);
       }
