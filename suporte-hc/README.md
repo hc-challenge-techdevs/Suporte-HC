@@ -1,73 +1,126 @@
-# React + TypeScript + Vite
+# Suporte HC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Suporte HC é uma ferramenta simples e acessível desenvolvida para ajudar pacientes, em especial os idosos, a gerenciar suas consultas médicas e a navegar pelo aplicativo oficial do Hospital das Clínicas. O projeto visa combater as altas taxas de absenteísmo, causadas principalmente pela dificuldade de uso de plataformas digitais e esquecimento de compromissos.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Informações Técnicas e de Desenvolvimento
 
-## React Compiler
+### Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O projeto foi desenvolvido como uma **Single Page Application (SPA)** utilizando **React, Vite, e TypeScript**, com uma arquitetura modular. A estilização é realizada exclusivamente com **Tailwind CSS**. A aplicação promove a integração com o backend via consumo de APIs.
 
-## Expanding the ESLint configuration
+| Categoria              | Tecnologia           | Uso no Projeto                                                                                                                                              |
+| :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework/Ambiente** | **React**            | Biblioteca principal para a construção da UI.                                                                                                               |
+| **Linguagem/Tipagem**  | **TypeScript**       | Garante tipagem estática e define interfaces como `UsuarioTO`, `LembreteTO`, e tipos compostos como `CadastroFormData` (Intersection Type).                 |
+| **Build Tool**         | **Vite**             | Ambiente de desenvolvimento e _bundler_.                                                                                                                    |
+| **Estilização**        | **Tailwind CSS**     | Única ferramenta de CSS utilizada, implementando **responsividade** e **Dark Mode**.                                                                        |
+| **Roteamento**         | **React Router DOM** | Gerencia rotas estáticas e a rota dinâmica `/tutorial/:titulo`.                                                                                             |
+| **Formulários**        | **React Hook Form**  | Utilizado para gestão e validação de formulários (Cadastro, Login, Lembretes, Usuário).                                                                     |
+| **Biblioteca**         | **React Calendar**   | A biblioteca de calendário é importada e utilizada no componente Lembretes/index.tsx para a funcionalidade de criar lembretes de agendamento das consultas. |
+| **Integração**         | **API Remota**       | Consumo de endpoints para CRUD (GET/POST/PUT/DELETE) em `apiService.ts`.                                                                                    |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Estrutura de Pastas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+A estrutura segue uma arquitetura modular por tipo de arquivo (`components`, `routes`, `services`, `types`) e uma pasta para arquivos públicos (`public`) contendo imagens e vídeos.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+├─ SPHC/
+├── public/
+│   ├── img/
+│   │    ├── foto-andrei.jpeg
+│   │    ├── foto-isabela.jpeg
+│   │    ├── foto-manuela.jpg
+│   │    └── logo-hc.png
+│   ├── tutorial-primeiro-acesso.mp4
+│   └── tutorial-teleconsulta.mp4
+├── src/
+│   ├── components/
+│   │   ├── Cabecalho/
+│   │   │   └── Cabecalho.tsx
+│   │   ├── Calendario/
+│   │   │   └── Calendario.tsx
+│   │   ├── DetalheTutorial/
+│   │   │   └── DetalheTutorial.tsx
+│   │   ├── Menu/
+│   │   │   └── Menu.tsx
+│   │   ├── Rodape/
+│   │   │   └── Rodape.tsx
+│   │   ├── ThemeContext/
+│   │   │   ├── ThemeContext.tsx
+│   │   │   └── useTheme.ts
+│   ├── routes/
+│   │   ├── Cadastro/
+│   │   │   └── index.tsx
+│   │   ├── Contato/
+│   │   │   └── index.tsx
+│   │   ├── Error/
+│   │   │   └── index.tsx
+│   │   ├── FAQ/
+│   │   │   └── index.tsx
+│   │   ├── Integrantes/
+│   │   │   └── index.tsx
+│   │   ├── Lembretes/
+│   │   │   └── index.tsx
+│   │   ├── Login/
+│   │   │   └── index.tsx
+│   │   ├── PaginaInicial/
+│   │   │   └── index.tsx
+│   │   ├── Tutorial/
+│   │   │   └── index.tsx
+│   │   └── Usuario/
+│   │       └── index.tsx
+│   ├── services/
+│   │   └── apiService.ts
+│   ├── types/
+│   │   ├── api.ts
+│   │   ├── forms.ts
+│   │   └── themeContextType.ts
+│   ├── App.tsx
+│   ├── globals.css
+│   └── main.tsx
+├── .env
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Imagens e Ícones
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Tipo                     | Descrição                                                                  | Uso no Projeto                                                       |
+| :----------------------- | :------------------------------------------------------------------------- | :------------------------------------------------------------------- |
+| **Imagens**              | `logo-hc.png`, `foto-andrei.jpeg`, `foto-isabela.jpeg`, `foto-manuela.jpg` | Identificação visual do projeto e dos integrantes.                   |
+| **Vídeos**               | `tutorial-primeiro-acesso.mp4`, `tutorial-teleconsulta.mp4`                | Conteúdo dos tutoriais acessados pela rota dinâmica.                 |
+| **Ícones (React Icons)** | `FaSun`, `FaMoon`, `FaSearchPlus`, `FaSearchMinus`                         | Funcionalidades de acessibilidade (Modo Escuro e Controle de Fonte). |
+| **Ícones (React Icons)** | `FaUser`, `FaArrowRightFromBracket`                                        | Navegação de Autenticação e Logout.                                  |
+| **Ícones (React Icons)** | `FaEnvelope`, `FaPhoneAlt`, `FaWhatsapp`, `FaGithub`, `FaLinkedin`         | Links e informações de contato dos integrantes.                      |
+
+---
+
+## Links do Projeto
+
+| Plataforma           | Link                                                                                                               |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| **GitHub**           | [https://github.com/hc-challenge-techdevs/SPHC.git](https://github.com/hc-challenge-techdevs/SPHC.git) |
+| **Vídeo no YouTube** | [https://youtu.be/DKogn27Oiqc](https://youtu.be/DKogn27Oiqc)                                                       |
+
+---
+
+## Integrantes
+
+| Nome                      | RM     | Turma  |
+| :------------------------ | :----- | :----- |
+| Andrei de Paiva Gibbini   | 563061 | 1TDSPH |
+| Isabela dos Santos Pinto  | 563422 | 1TDSPH |
+| Manuela de Lacerda Soares | 564887 | 1TDSPH |
