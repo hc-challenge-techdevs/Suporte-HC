@@ -32,9 +32,10 @@ export default function Usuario() {
     const navigate = useNavigate();
     const [usuarioData, setUsuarioData] = useState<UsuarioTO | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [mode, setMode] = useState<"view" | "edit">("view"); // Estado para alternar visualização/edição
+    const [mode, setMode] = useState<"view" | "edit">("view");
     const [apiMessage, setApiMessage] = useState<string | null>(null);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false); // NOVO ESTADO DE SUBMISSÃO
     
     const idUsuarioLogado = getLocalSessionData()?.idUsuario;
 
@@ -77,26 +78,84 @@ export default function Usuario() {
         }
     }, [idUsuarioLogado, navigate, reset]);
 
-    const handleExcluirConta = async () => {
+    const handleExcluirConta = () => {
         if (!idUsuarioLogado) return;
         setShowDeleteModal(true);
     };
 
     const confirmDelete = async () => {
         setShowDeleteModal(false);
-        const sucesso = await excluirUsuario(idUsuarioLogado as number);
+        setIsSubmitting(true); // ATIVAR AGUARDE
+        
+        try {
+            const sucesso = await excluirUsuario(idUsuarioLogado as number);
 
-        if (sucesso) {
-            clearLocalSession();
-            console.log("Sua conta foi excluída com sucesso.");
-            navigate("/login");
-        } else {
-            setApiMessage("Falha ao excluir a conta. Tente novamente.");
+            if (sucesso) {
+                clearLocalSession();
+                console.log("Sua conta foi excluída com sucesso.");
+                navigate("/login");
+            } else {
+                setApiMessage("Falha ao excluir a conta. Tente novamente.");
+            }
+        } finally {
+            setIsSubmitting(false); // DESATIVAR AGUARDE
         }
     };
 
     const onSubmit: SubmitHandler<EdicaoFormData> = async (data) => {
-        setApiMessage("Lógica de edição em desenvolvimento. Aguarde.");
+        setApiMessage(null);
+        setIsSubmitting(true); // ATIVAR AGUARDE
+
+        if (!idUsuarioLogado || !usuarioData) {
+            clearLocalSession();
+            setApiMessage("Sessão expirada. Redirecionando.");
+            navigate("/login");
+            setIsSubmitting(false);
+            return;
+        }
+
+        const emailParaEnviar = data.email.trim() === "" ? usuarioData.email : data.email;
+        const senhaParaEnviar = data.senha || "DEIXAR_INALTERADA";
+        
+        const payload: CadastroPayload = {
+            usuario: {
+                nomeUsuario: data.nomeUsuario,
+                telefoneUsuario: data.telefoneUsuario,
+            },
+            login: {
+                email: emailParaEnviar,
+                senhaLogin: senhaParaEnviar,
+            },
+        };
+
+        try {
+            const userAtualizado = await atualizarUsuario(
+                idUsuarioLogado as number,
+                payload
+            );
+
+            if (userAtualizado) {
+                setApiMessage("Dados alterados com sucesso!");
+                localStorage.setItem(
+                    "session_user_data",
+                    JSON.stringify({
+                        idUsuario: idUsuarioLogado,
+                        nomeUsuario: userAtualizado.nomeUsuario,
+                        email: userAtualizado.email,
+                    })
+                );
+                setMode("view");
+                setUsuarioData(userAtualizado);
+            } else {
+                setApiMessage(
+                    "Falha ao atualizar. Verifique a validade dos dados ou se o email já está em uso."
+                );
+            }
+        } catch (error) {
+            setApiMessage("Falha ao comunicar com a API.");
+        } finally {
+            setIsSubmitting(false); // DESATIVAR AGUARDE
+        }
     };
 
     if (isLoading) {
@@ -125,14 +184,16 @@ export default function Usuario() {
                             <button
                                 onClick={() => setShowDeleteModal(false)}
                                 className="btn-cancel"
+                                disabled={isSubmitting} // Desabilita
                             >
                                 Cancelar
                             </button>
                             <button
                                 onClick={confirmDelete}
                                 className="btn-danger"
+                                disabled={isSubmitting} // Desabilita
                             >
-                                Excluir
+                                {isSubmitting ? "Aguarde..." : "Excluir"}
                             </button>
                         </div>
                     </div>
@@ -176,6 +237,7 @@ export default function Usuario() {
                         <button
                             onClick={handleExcluirConta}
                             className="btn-perfil-excluir"
+                            disabled={isSubmitting} // Desabilita
                         >
                             Excluir
                         </button>
@@ -196,16 +258,72 @@ export default function Usuario() {
                     
                     <div>
                         <label>Nome Completo:</label>
-                        <input type="text" className="form-input" disabled /> 
+                        <input
+                            type="text"
+                            {...register("nomeUsuario", { required: "O nome é obrigatório." })}
+                            className="form-input"
+                            disabled={isSubmitting}
+                        />
+                        {errors.nomeUsuario && (
+                            <p className="error-message">{errors.nomeUsuario.message}</p>
+                        )}
+                    </div>
+
+                    <div>
+                        <label>Telefone:</label>
+                        <input
+                            type="text"
+                            {...register("telefoneUsuario")}
+                            className="form-input"
+                            disabled={isSubmitting}
+                        />
+                        {errors.telefoneUsuario && (
+                            <p className="error-message">{errors.telefoneUsuario.message}</p>
+                        )}
+                    </div>
+
+                    <div>
+                        <label>Novo Email (Atual: {usuarioData.email}):</label>
+                        <input
+                            type="email"
+                            {...register("email", {
+                                validate: (value) =>
+                                    !value ||
+                                    /^\S+@\S+$/i.test(value) ||
+                                    "Formato de email inválido.",
+                            })}
+                            className="form-input"
+                            disabled={isSubmitting}
+                        />
+                        {errors.email && (
+                            <p className="error-message">{errors.email.message}</p>
+                        )}
+                    </div>
+
+                    <div>
+                        <label>Nova Senha:</label>
+                        <input
+                            type="password"
+                            {...register("senha")}
+                            className="form-input"
+                            disabled={isSubmitting}
+                        />
+                        <p className="form-helper-text">
+                            Preencha apenas se desejar alterar a senha.
+                        </p>
+                        {errors.senha && (
+                            <p className="error-message">{errors.senha.message}</p>
+                        )}
                     </div>
                     
-                    <button type="submit" className="btn-submit" disabled>
-                        Salvar Alterações
+                    <button type="submit" className="btn-submit" disabled={isSubmitting}>
+                        {isSubmitting ? "Aguarde..." : "Salvar Alterações"}
                     </button>
                     <button
                         type="button"
                         onClick={() => setMode("view")}
                         className="btn-cancel"
+                        disabled={isSubmitting} // Desabilita o botão Cancelar durante o envio
                     >
                         Cancelar
                     </button>
