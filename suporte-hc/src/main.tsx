@@ -13,7 +13,7 @@ import Cadastro from "./routes/Cadastro/index.tsx";
 import Login from "./routes/Login/index.tsx";
 import Usuario from "./routes/Usuario/index.tsx";
 import { ThemeProvider } from "./components/ThemeContext/ThemeContext.tsx";
-import Integrantes from "./routes/Integrante/index.tsx";
+import Integrantes from "./routes/Integrantes/index.tsx";
 
 import "./globals.css"
 
