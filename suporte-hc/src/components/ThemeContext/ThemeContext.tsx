@@ -1,9 +1,19 @@
-import { createContext } from "react";
-export const ThemeContext = createContext(undefined);
-export const ThemeProvider = ({ children }: any) => {
+import { createContext, useState, type ReactNode } from "react";
+import type { ThemeContextType } from "../../types/themeContextType";
+
+export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [isDark, setIsDark] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDark((prevIsDark) => !prevIsDark);
+  };
+
   return (
-    <ThemeContext.Provider value={{ isDark: false, toggleTheme: () => {} }}>
+    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-};
+}
+
