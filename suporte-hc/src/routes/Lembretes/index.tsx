@@ -12,6 +12,7 @@ import {
 } from "../../services/apiService";
 import type { LembreteTO, UsuarioTO } from "../../types/api";
 import type { LembreteFormData } from "../../types/forms";
+import type { Value } from "react-calendar/dist/shared/types.js";
 
 const getLocalSessionData = (): UsuarioTO | null => {
     const storedData = localStorage.getItem('session_user_data');
@@ -28,8 +29,6 @@ const getLocalSessionData = (): UsuarioTO | null => {
     return null;
 };
 
-type CalendarValue = Date | Date[] | null;
-
 export default function Lembretes() {
     const navigate = useNavigate();
     const [lembretes, setLembretes] = useState<LembreteTO[]>([]);
@@ -38,7 +37,7 @@ export default function Lembretes() {
     const [isLoading, setIsLoading] = useState(true);
     const [apiError, setApiError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [calendarValue, setCalendarValue] = useState<CalendarValue>(new Date());
+    const [calendarValue, setCalendarValue] = useState<Value>(new Date());
 
     const idUsuarioLogado = getLocalSessionData()?.idUsuario;
 
@@ -178,7 +177,7 @@ export default function Lembretes() {
         }
     };
 
-    const handleDateChange = (value: CalendarValue, _event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleDateChange = (value: Value, _event: React.MouseEvent<HTMLButtonElement>) => {
         if (!idUsuarioLogado) {
             alert("Faça login para cadastrar um novo lembrete.");
             navigate("/login");
@@ -426,6 +425,4 @@ export default function Lembretes() {
             </div>
         </div>
     );
-    
 }
-
