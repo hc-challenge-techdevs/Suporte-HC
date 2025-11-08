@@ -1,0 +1,1 @@
+export default function DetalheTutorial() { return (<h1>Detalhe Tutorial Placeholder</h1>); }
