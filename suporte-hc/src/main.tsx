@@ -9,12 +9,13 @@ import Tutorial from "./routes/Tutorial/index.tsx";
 import DetalheTutorial from "./components/DetalheTutorial/DetalheTutorial.tsx";
 import Contato from "./routes/Contato/index.tsx";
 import FAQ from "./routes/FAQ/index.tsx";
-import Integrantes from "./routes/Integrantes/index.tsx";
-import "./globals.css";
 import Cadastro from "./routes/Cadastro/index.tsx";
 import Login from "./routes/Login/index.tsx";
 import Usuario from "./routes/Usuario/index.tsx";
 import { ThemeProvider } from "./components/ThemeContext/ThemeContext.tsx";
+import Integrantes from "./routes/Integrante/index.tsx";
+
+import "./globals.css"
 
 const router = createBrowserRouter([
   {

@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply flex flex-col min-h-screen font-sans text-gray-800 transition-colors duration-300;
+  background-color: #ececec;
+}
+
+@layer {
+  .menu-container {
+    @apply bg-[#fff] border-2 border-[#007b7b] p-4 w-full transition-colors duration-300 relative;
+
+    .menu-wrapper-desktop {
+      @apply hidden md:flex justify-between items-center w-full max-w-7xl mx-auto;
+
+      .menu-logo {
+        & img {
+          @apply w-40 h-auto;
+        }
+      }
+
+      .menu-links-nav {
+        @apply flex-grow flex justify-center items-center space-x-4;
+
+        .menu-link {
+          @apply hover:text-[#007b7b] px-3 py-2 text-base font-medium transition-colors duration-300;
+
+          &.menu-link--user {
+            @apply font-bold text-[#007b7b];
+          }
+        }
+      }
+
+      .menu-actions {
+        @apply flex space-x-2 items-center;
+
+        .acc-button {
+          @apply hover:text-[#007b7b];
+          & img,
+          & svg {
+            @apply h-6 w-6;
+          }
+        }
+      }
+    }
+
+    .menu-wrapper-mobile {
+      @apply md:hidden w-full flex justify-between items-center px-4 py-2;
+
+      .menu-logo img {
+        @apply h-10 w-auto;
+      }
+
+      .menu-toggle-button {
+        @apply text-2xl text-gray-800 bg-transparent border-none cursor-pointer;
+      }
+    }
+
+    .menu-dropdown-mobile {
+      @apply md:hidden absolute top-full left-0 w-full bg-white shadow-lg z-50;
+
+      .menu-dropdown-inner {
+        @apply flex flex-col p-4 space-y-2;
+
+        .menu-link-mobile {
+          @apply text-black hover:text-[#007b7b] text-xl font-bold p-4 block;
+
+          &.menu-link-mobile--user {
+            @apply text-[#007b7b];
+          }
+
+          &.menu-link-mobile--logout {
+            @apply w-full text-left;
+          }
+        }
+
+        .menu-divider {
+          @apply my-2 border-t border-gray-200;
+        }
+
+        .menu-acc-mobile-header {
+          @apply flex justify-between items-center py-2;
+
+          .acc-button {
+            @apply text-black hover:text-[#007b7b];
+
+            & svg {
+              @apply h-6 w-6;
+            }
+          }
+
+          .menu-acc-mobile-buttons {
+            @apply flex space-x-2;
+
+            .acc-button-mobile-small {
+              @apply p-1 px-2 text-base font-semibold text-gray-700 hover:bg-gray-100 rounded border border-gray-700;
+            }
+          }
+        }
+
+        .acc-button-mobile-large {
+          @apply w-full py-2 bg-gray-100 rounded-md text-gray-700 hover:bg-gray-200 transition-colors;
+        }
+      }
+    }
+
+    .main-container,
+    .lembretes-page,
+    .usuario-container {
+      @apply w-full mx-auto py-10 px-4 min-h-[80vh] flex flex-col items-center;
+    }
+
+    footer {
+      @apply bg-[#007b7b] text-[#fff] text-center p-3.5 mt-auto w-full transition-colors duration-300;
+    }
+
+    body.dark-mode {
+      background-color: #121212 !important;
+      @apply text-gray-200;
+    }
+
+    .dark-mode .menu-container {
+      @apply bg-[#1F1F1F] border-[#d6d6d6];
+
+      .menu-link,
+      .menu-link-mobile,
+      .acc-button {
+        @apply text-gray-200 hover:text-[#6d6d6d];
+      }
+    }
+  }
+}
