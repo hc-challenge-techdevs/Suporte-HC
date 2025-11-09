@@ -112,9 +112,9 @@ A estrutura segue uma arquitetura modular por tipo de arquivo (`components`, `ro
  
 | Plataforma           | Link                                                                                                               |
 | :------------------- | :----------------------------------------------------------------------------------------------------------------- |
-| **GitHub**           | [https://github.com/hc-challenge-techdevs/SPHC.git](https://github.com/hc-challenge-techdevs/Suporte-HC.git) |
+| **GitHub**           | [https://github.com/hc-challenge-techdevs/Suporte-HC.git](https://github.com/hc-challenge-techdevs/Suporte-HC.git) |
 | **Vídeo no YouTube** | [https://youtu.be/sOvbkOXPoDc](https://youtu.be/sOvbkOXPoDc)                                                       |
-| **Link do deploy na Vercel** | [https://sphc-gray.vercel.app/](https://sphc-gray.vercel.app/)
+| **Link do deploy na Vercel** | [https://suporte-hc.vercel.app/](https://suporte-hc.vercel.app/)
 ---
  
 ## Integrantes
